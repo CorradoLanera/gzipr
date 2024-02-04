@@ -31,6 +31,20 @@ test_that("gzip works", {
     "not yet implemented for objects of class matrix"
   )
 
+  expect_s3_class(
+    data.frame(
+      a = 1:2, b = 3:4, c = 5:6,
+      row.names = c("d", "e")
+    ) |>
+      gzipr(),
+    "gzipr"
+  )
+  expect_error(
+    tibble::tibble(a = 1:2, b = 3:4, c = 5:6) |>
+      gzipr(),
+    "y must be provided if x has no or standard rownames"
+  )
+
 })
 
 

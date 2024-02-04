@@ -39,4 +39,31 @@ usethis::use_testthat()
 fs::file_create(here::here("tests/testthat/setup.R"))
 usethis::use_test("setup")
 usethis::use_git()
+usethis::use_github(protocol = "ssh")
 usethis::use_coverage()
+
+# Basic functions' infrastructure ---------------------------------
+
+usethis::use_r("utils")
+usethis::use_test("utils")
+usethis::use_r("functions")
+usethis::use_test("functions")
+
+# Isolation -------------------------------------------------------
+
+usethis::git_vaccinate()
+usethis::use_tidy_description()
+renv::upgrade()
+renv::update()
+renv::status()
+renv::snapshot()
+
+# CI/CD -----------------------------------------------------------
+
+usethis::use_github_action("check-release")
+usethis::use_github_actions_badge("check-release")
+usethis::use_github_action("test-coverage")
+usethis::use_github_actions_badge("test-coverage")
+usethis::use_github_action("lint")
+usethis::use_github_actions_badge("lint")
+usethis::use_tidy_github()

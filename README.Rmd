@@ -18,6 +18,11 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test coverage](https://codecov.io/gh/CorradoLanera/gzipr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CorradoLanera/gzipr?branch=main)
+[![R-CMD-check](https://github.com/CorradoLanera/gzipr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/R-CMD-check.yaml)
+[![check-release](https://github.com/CorradoLanera/gzipr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/check-release.yaml)
+[![test-coverage](https://github.com/CorradoLanera/gzipr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/test-coverage.yaml)
+[![lint](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
 The goal of gzipr is to ...

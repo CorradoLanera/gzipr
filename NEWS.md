@@ -1,3 +1,3 @@
-# gzipr (development version)
+# gzipr 0.1.0
 
 * Initial commit.

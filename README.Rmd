@@ -25,23 +25,60 @@ knitr::opts_chunk$set(
 [![lint](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
-The goal of gzipr is to ...
+The goal of gzipr is to implement an R version for the "Less is More: Parameter-Free Text Classification with Gzip" by Zhiying Jiang, Matthew Y.R. Yang, Mikhail Tsirlin, Raphael Tang, Jimmy Lin (https://arxiv.org/abs/2212.09410)
+
+
+Citing the original paper abstract:
+
+Citing the original paper: Deep neural networks (DNNs) are often used
+for text classification tasks as they usually achieve high levels of
+accuracy. However, DNNs can be computationally intensive with
+billions of parameters and large amounts of labeled data, which can
+make them expensive to use, to optimize and to transfer to
+out-of-distribution (OOD) cases in practice. In this paper, we
+propose a non-parametric alternative to DNNs that's easy,
+light-weight and universal in text classification: a combination of a
+simple compressor like gzip with a k-nearest-neighbor classifier.
+Without any training, pre-training or fine-tuning, our method
+achieves results that are competitive with non-pretrained deep
+learning methods on six in-distributed datasets. It even outperforms
+BERT on all five OOD datasets, including four low-resource languages.
+Our method also performs particularly well in few-shot settings where
+labeled data are too scarce for DNNs to achieve a satisfying
+accuracy.
+
+
 
 ## Installation
 
-You can install the development version of gzipr like so:
+You can install the development version of `{gzipr}` like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# install.packages("devtools")
+devtools::install_github("CorradoLanera/gzipr")
 ```
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, eval=FALSE}
 library(gzipr)
-## basic example code
+
+train <- mtcars[1:20, ]
+test <- mtcars[21:32, ]
+
+train_x <- train[, -2]
+train_y <- train[[2]]
+
+test_x <- test[, -2]
+test_y <- test[[2]]
+
+model <- gzipr(train_x, train_y)
+result <- predict(model, test_x)
+
+# accuracy
+mean(result == test_y)
 ```
 
 ## Code of Conduct

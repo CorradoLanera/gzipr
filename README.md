@@ -1,56 +1,46 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
 # gzipr <img src="man/figures/logo.png" align="right" height="120" alt="" />
 
-
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test coverage](https://codecov.io/gh/CorradoLanera/gzipr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CorradoLanera/gzipr?branch=main)
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/CorradoLanera/gzipr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CorradoLanera/gzipr?branch=main)
 [![R-CMD-check](https://github.com/CorradoLanera/gzipr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/R-CMD-check.yaml)
 [![check-release](https://github.com/CorradoLanera/gzipr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/check-release.yaml)
 [![test-coverage](https://github.com/CorradoLanera/gzipr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/test-coverage.yaml)
 [![lint](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
-The goal of gzipr is to implement ageneralized R version for the "Less is More: Parameter-Free Text Classification with Gzip" by Zhiying Jiang, Matthew Y.R. Yang, Mikhail Tsirlin, Raphael Tang, Jimmy Lin (https://arxiv.org/abs/2212.09410)
-
+The goal of gzipr is to implement ageneralized R version for the “Less
+is More: Parameter-Free Text Classification with Gzip” by Zhiying Jiang,
+Matthew Y.R. Yang, Mikhail Tsirlin, Raphael Tang, Jimmy Lin
+(<https://arxiv.org/abs/2212.09410>)
 
 Citing the original paper abstract:
 
 Citing the original paper: Deep neural networks (DNNs) are often used
 for text classification tasks as they usually achieve high levels of
-accuracy. However, DNNs can be computationally intensive with
-billions of parameters and large amounts of labeled data, which can
-make them expensive to use, to optimize and to transfer to
-out-of-distribution (OOD) cases in practice. In this paper, we
-propose a non-parametric alternative to DNNs that's easy,
-light-weight and universal in text classification: a combination of a
-simple compressor like gzip with a k-nearest-neighbor classifier.
-Without any training, pre-training or fine-tuning, our method
-achieves results that are competitive with non-pretrained deep
-learning methods on six in-distributed datasets. It even outperforms
-BERT on all five OOD datasets, including four low-resource languages.
-Our method also performs particularly well in few-shot settings where
-labeled data are too scarce for DNNs to achieve a satisfying
-accuracy.
+accuracy. However, DNNs can be computationally intensive with billions
+of parameters and large amounts of labeled data, which can make them
+expensive to use, to optimize and to transfer to out-of-distribution
+(OOD) cases in practice. In this paper, we propose a non-parametric
+alternative to DNNs that’s easy, light-weight and universal in text
+classification: a combination of a simple compressor like gzip with a
+k-nearest-neighbor classifier. Without any training, pre-training or
+fine-tuning, our method achieves results that are competitive with
+non-pretrained deep learning methods on six in-distributed datasets. It
+even outperforms BERT on all five OOD datasets, including four
+low-resource languages. Our method also performs particularly well in
+few-shot settings where labeled data are too scarce for DNNs to achieve
+a satisfying accuracy.
 
 ## Features
 
 - `{gzipr}` works with data frames, lists, and text data.
-
 
 ## Installation
 
@@ -65,7 +55,7 @@ devtools::install_github("CorradoLanera/gzipr")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+``` r
 library(gzipr)
 
 ## tabular data
@@ -83,6 +73,7 @@ result <- predict(model, test_x)
 
 # accuracy
 mean(result == test_y)
+#> [1] 0.75
 
 
 ## Text data
@@ -105,8 +96,13 @@ test_text_x <- c("I enjoy football", "Basketball is the best")
 model_text <- gzipr(train_text_x, train_text_y)
 res_text <- predict(model_text, test_text_x)
 res_text
+#>       I enjoy football Basketball is the best 
+#>                    "A"                    "B"
 ```
 
 ## Code of Conduct
 
-Please note that the gzipr project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the gzipr project is released with a [Contributor Code
+of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

@@ -40,7 +40,7 @@ test_that("gzip works", {
     "gzipr"
   )
   expect_error(
-    tibble::tibble(a = 1:2, b = 3:4, c = 5:6) |>
+    data.frame(a = 1:2, b = 3:4, c = 5:6) |>
       gzipr(),
     "y must be provided if x has no or standard rownames"
   )

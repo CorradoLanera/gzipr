@@ -66,7 +66,7 @@ gzipr.data.frame <- function(x, y = NULL) {
   y <- y %||% rownames(x)
   if (
     is.null(y) ||
-    isTRUE(all.equal(y, as.character(seq_len(nrow_x))))
+      isTRUE(all.equal(y, as.character(seq_len(nrow_x))))
   ) {
     usethis::ui_stop(paste(
       "y must be provided if x has no or standard rownames",

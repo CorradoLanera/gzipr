@@ -20,12 +20,11 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Codecov test coverage](https://codecov.io/gh/CorradoLanera/gzipr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CorradoLanera/gzipr?branch=main)
 [![R-CMD-check](https://github.com/CorradoLanera/gzipr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/R-CMD-check.yaml)
-[![check-release](https://github.com/CorradoLanera/gzipr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/check-release.yaml)
 [![test-coverage](https://github.com/CorradoLanera/gzipr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/test-coverage.yaml)
 [![lint](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml/badge.svg)](https://github.com/CorradoLanera/gzipr/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
-The goal of gzipr is to implement ageneralized R version for the "Less is More: Parameter-Free Text Classification with Gzip" by Zhiying Jiang, Matthew Y.R. Yang, Mikhail Tsirlin, Raphael Tang, Jimmy Lin (https://arxiv.org/abs/2212.09410)
+The goal of gzipr is to implement a generalized R version for the "Less is More: Parameter-Free Text Classification with Gzip" by Zhiying Jiang, Matthew Y.R. Yang, Mikhail Tsirlin, Raphael Tang, Jimmy Lin (https://arxiv.org/abs/2212.09410)
 
 
 Citing the original paper abstract:

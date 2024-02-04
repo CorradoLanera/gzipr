@@ -24,8 +24,8 @@ gzip_knn <- function(x, model, k = 3) {
 
 #' Gzip Distance
 #'
-#' The distance is calculated as the difference between the complexity of
-#' the reference and the complexity of the test point, divided by the
+#' The distance is calculated as the difference between the complexity
+#' of the reference and the complexity of the test point, divided by the
 #' maximum complexity between the two.
 #'
 #' @param ref reference data instance
@@ -33,9 +33,9 @@ gzip_knn <- function(x, model, k = 3) {
 #'
 #' @return the distance between the two data instances
 gzip_dist <- function(ref, x) {
-  c_ref <- get_gzip_complexity(ref)
-  c_x <- get_gzip_complexity(x)
-  c_xref <- get_gzip_complexity(list(ref, x))
+  c_ref <- get_gzip_complexity(list(ref))
+  c_x <- get_gzip_complexity(list(x))
+  c_xref <- get_gzip_complexity(unique(list(ref, x)))
 
   (c_xref - min(c_x, c_ref)) / max(c_x, c_ref)
 }

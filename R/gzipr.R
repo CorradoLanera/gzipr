@@ -55,7 +55,7 @@ gzipr <- function(x, y = NULL) {
 #' @export
 gzipr.character <- function(x, y = NULL) {
   as.list(x) |>
-    purrr::set_names(y) |>
+    purrr::set_names(y %||% x) |>
     structure(class = "gzipr")
 }
 
@@ -92,7 +92,10 @@ gzipr.gzipr <- function(x, y = NULL) {
 #'
 #' @export
 gzipr.default <- function(x, y = NULL) {
-  usethis::ui_stop("gzipr not implemented for {class(x)} objects yet")
+  usethis::ui_stop(paste(
+    "gzipr not yet implemented for objects of class",
+    "{paste(class(x), collapse = ', ')}"
+  ))
 }
 
 #' @export

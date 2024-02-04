@@ -15,7 +15,7 @@ gzip_dist(ref, x)
 the distance between the two data instances
 }
 \description{
-The distance is calculated as the difference between the complexity of
-the reference and the complexity of the test point, divided by the
+The distance is calculated as the difference between the complexity
+of the reference and the complexity of the test point, divided by the
 maximum complexity between the two.
 }

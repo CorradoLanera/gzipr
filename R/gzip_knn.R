@@ -33,9 +33,14 @@ gzip_knn <- function(x, model, k = 3) {
 #'
 #' @return the distance between the two data instances
 gzip_dist <- function(ref, x) {
-  c_ref <- get_gzip_complexity(list(ref))
-  c_x <- get_gzip_complexity(list(x))
-  c_xref <- get_gzip_complexity(unique(list(ref, x)))
+  ref <- train2char(ref)
+  x <- train2char(x)
+  zref <- rbind(ref, x) |>
+    train2char()
+
+  c_ref <- get_gzip_complexity(ref)
+  c_x <- get_gzip_complexity(x)
+  c_xref <- get_gzip_complexity(zref)
 
   (c_xref - min(c_x, c_ref)) / max(c_x, c_ref)
 }

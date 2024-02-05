@@ -1,5 +1,6 @@
 # gzipr (development version)
 
+* Converted all objects to character before prediction to speed up the serialization.
 * Added progress bar to the prediction process.
 * Fix a bug that caused the `predict()` function to fail when the new input data to predict was without rownames.
 

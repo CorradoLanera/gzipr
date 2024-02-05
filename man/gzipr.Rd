@@ -6,6 +6,7 @@
 \alias{gzipr.data.frame}
 \alias{gzipr.list}
 \alias{gzipr.gzipr}
+\alias{gzipr.default}
 \title{gzipr}
 \usage{
 gzipr(x, y = NULL)
@@ -17,11 +18,17 @@ gzipr(x, y = NULL)
 \method{gzipr}{list}(x, y = NULL)
 
 \method{gzipr}{gzipr}(x, y = NULL)
+
+\method{gzipr}{default}(x, y = NULL)
 }
 \arguments{
 \item{x}{training data}
 
-\item{y}{labels for training data, must be the same length of \code{x}}
+\item{y}{(default = \code{NULL}) labels for training data, must be the
+same length of \code{x}, i.e., one label per observation. If provided,
+\code{y} is used as labels for \code{x}, otherwise, if \code{x} is named
+(\code{rownames} for \code{data.frame}s, \code{names} for \code{character}s) \code{y} is set
+to the names of \code{x}. If \code{x} is not named, \code{y} must be provided.}
 }
 \value{
 a \code{gzipr} model object
@@ -51,12 +58,14 @@ data
 
 \item \code{gzipr(data.frame)}: method to train on \code{data.frame}s as input data
 
-\item \code{gzipr(list)}: method to train
-on \code{list}s as input data
+\item \code{gzipr(list)}: \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+method to train on \code{list}s as input data
 
-\item \code{gzipr(gzipr)}: method to
-retrain a \code{gzipr} model mantaing the same data and possibly
-changing the labels
+\item \code{gzipr(gzipr)}: method to retrain a \code{gzipr} model maintaining the
+same data and possibly changing the labels
+
+\item \code{gzipr(default)}: catch-all method for not yet implemented training
+objects
 
 }}
 \examples{
@@ -79,6 +88,6 @@ mean(result == test_y)
 }
 \references{
 Jiang, Zhiying, Matthew Y. R. Yang, Mikhail Tsirlin,
-Raphael Tang, and Jimmy Lin. 2022. “Less Is More: Parameter-Free Text
-Classification with Gzip.” - http://arxiv.org/abs/2212.09410
+Raphael Tang, and Jimmy Lin. 2022. "Less Is More: Parameter-Free
+Text Classification with Gzip." - http://arxiv.org/abs/2212.09410
 }

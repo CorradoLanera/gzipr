@@ -17,25 +17,25 @@ coverage](https://codecov.io/gh/CorradoLanera/gzipr/branch/main/graph/badge.svg)
 The goal of gzipr is to implement a generalized R version for the “Less
 is More: Parameter-Free Text Classification with Gzip” by Zhiying Jiang,
 Matthew Y.R. Yang, Mikhail Tsirlin, Raphael Tang, Jimmy Lin
-(<https://arxiv.org/abs/2212.09410>)
+(<https://arxiv.org/abs/2212.09410>) that works for tabular data, text
+data, and general lists of arbitrary (structured similar) observations.
 
 Citing the original paper abstract:
 
-Citing the original paper: Deep neural networks (DNNs) are often used
-for text classification tasks as they usually achieve high levels of
-accuracy. However, DNNs can be computationally intensive with billions
-of parameters and large amounts of labeled data, which can make them
-expensive to use, to optimize and to transfer to out-of-distribution
-(OOD) cases in practice. In this paper, we propose a non-parametric
-alternative to DNNs that’s easy, light-weight and universal in text
-classification: a combination of a simple compressor like gzip with a
-k-nearest-neighbor classifier. Without any training, pre-training or
-fine-tuning, our method achieves results that are competitive with
-non-pretrained deep learning methods on six in-distributed datasets. It
-even outperforms BERT on all five OOD datasets, including four
-low-resource languages. Our method also performs particularly well in
-few-shot settings where labeled data are too scarce for DNNs to achieve
-a satisfying accuracy.
+> Deep neural networks (DNNs) are often used for text classification
+> tasks as they usually achieve high levels of accuracy. However, DNNs
+> can be computationally intensive with billions of parameters and large
+> amounts of labeled data, which can make them expensive to use, to
+> optimize and to transfer to out-of-distribution (OOD) cases in
+> practice. In this paper, we propose a non-parametric alternative to
+> DNNs that’s easy, light-weight and universal in text classification: a
+> combination of a simple compressor like gzip with a k-nearest-neighbor
+> classifier. Without any training, pre-training or fine-tuning, our
+> method achieves results that are competitive with non-pretrained deep
+> learning methods on six in-distributed datasets. It even outperforms
+> BERT on all five OOD datasets, including four low-resource languages.
+> Our method also performs particularly well in few-shot settings where
+> labeled data are too scarce for DNNs to achieve a satisfying accuracy.
 
 ## Features
 

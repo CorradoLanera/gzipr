@@ -20,14 +20,18 @@
 #' accuracy.
 #'
 #' @param x training data
-#' @param y labels for training data, must be the same length of `x`
+#' @param y (default = `NULL`) labels for training data, must be the
+#'   same length of `x`, i.e., one label per observation. If provided,
+#'   `y` is used as labels for `x`, otherwise, if `x` is named
+#'   (`rownames` for `data.frame`s, `names` for `character`s) `y` is set
+#'   to the names of `x`. If `x` is not named, `y` must be provided.
 #'
 #' @return a `gzipr` model object
 #' @export
 #'
 #' @references Jiang, Zhiying, Matthew Y. R. Yang, Mikhail Tsirlin,
-#' Raphael Tang, and Jimmy Lin. 2022. “Less Is More: Parameter-Free Text
-#' Classification with Gzip.” - http://arxiv.org/abs/2212.09410
+#'   Raphael Tang, and Jimmy Lin. 2022. "Less Is More: Parameter-Free
+#'   Text Classification with Gzip." - http://arxiv.org/abs/2212.09410
 #'
 #' @examples
 #' library(gzipr)
@@ -79,8 +83,8 @@ gzipr.data.frame <- function(x, y = NULL) {
     structure(class = "gzipr")
 }
 
-#' @describeIn gzipr method to train
-#'   on `list`s as input data
+#' @describeIn gzipr `r lifecycle::badge("experimental")`
+#'   method to train on `list`s as input data
 #' @export
 gzipr.list <- function(x, y = NULL) {
   stopifnot(length(unique(purrr::map(x, class))) == 1L)
@@ -88,9 +92,8 @@ gzipr.list <- function(x, y = NULL) {
     structure(class = "gzipr")
 }
 
-#' @describeIn gzipr method to
-#'   retrain a `gzipr` model mantaing the same data and possibly
-#'   changing the labels
+#' @describeIn gzipr method to retrain a `gzipr` model maintaining the
+#'   same data and possibly changing the labels
 #' @export
 gzipr.gzipr <- function(x, y = NULL) {
   if (!is.null(names(x))) {
@@ -100,7 +103,8 @@ gzipr.gzipr <- function(x, y = NULL) {
     structure(class = "gzipr")
 }
 
-#'
+#' @describeIn gzipr catch-all method for not yet implemented training
+#'   objects
 #' @export
 gzipr.default <- function(x, y = NULL) {
   usethis::ui_stop(paste(
@@ -110,9 +114,9 @@ gzipr.default <- function(x, y = NULL) {
 }
 
 #' @export
-predict.gzipr <- function(object, newdata = NULL, k = 3) {
-  stopifnot(is_gzipr(object))
+predict.gzipr <- function(gzipr, newdata = NULL, k = 3) {
+  stopifnot(is_gzipr(gzipr))
 
-  newdata <- gzipr(newdata %||% unname(object))
-  purrr::map_chr(newdata, \(x1) gzip_knn(x1, object, k = k))
+  newdata <- gzipr(newdata %||% unname(gzipr))
+  purrr::map_chr(newdata, \(x1) gzip_knn(x1, gzipr, k = k))
 }

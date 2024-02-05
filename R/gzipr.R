@@ -136,10 +136,27 @@ gzipr.default <- function(x, y = NULL, test = FALSE) {
   ))
 }
 
+#' @describeIn gzipr method to predict on a `gzipr` model
+#'
+#' @param gzipr trained model
+#' @param newdata optional new test data to classify
+#' @param k (int, default k = 3) number of neighbors to consider
+#' @param .progress (logical, default .progress = TRUE) whether to
+#'   display a progress bar.
+#'
 #' @export
-predict.gzipr <- function(gzipr, newdata = NULL, k = 3) {
+predict.gzipr <- function(
+    gzipr,
+    newdata = NULL,
+     k = 3,
+    .progress = TRUE
+) {
   stopifnot(is_gzipr(gzipr))
 
   newdata <- gzipr(newdata %||% unname(gzipr), test = TRUE)
-  purrr::map_chr(newdata, \(x1) gzip_knn(x1, gzipr, k = k))
+  purrr::map_chr(
+    newdata,
+    \(x1) gzip_knn(x1, gzipr, k = k),
+    .progress = .progress
+  )
 }

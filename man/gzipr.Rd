@@ -7,6 +7,7 @@
 \alias{gzipr.list}
 \alias{gzipr.gzipr}
 \alias{gzipr.default}
+\alias{predict.gzipr}
 \title{gzipr}
 \usage{
 gzipr(x, y = NULL, test = FALSE)
@@ -20,6 +21,8 @@ gzipr(x, y = NULL, test = FALSE)
 \method{gzipr}{gzipr}(x, y = NULL, test = FALSE)
 
 \method{gzipr}{default}(x, y = NULL, test = FALSE)
+
+\method{predict}{gzipr}(gzipr, newdata = NULL, k = 3, .progress = TRUE)
 }
 \arguments{
 \item{x}{training data}
@@ -32,6 +35,15 @@ to the names of \code{x}. If \code{x} is not named, \code{y} must be provided.}
 
 \item{test}{(default = \code{FALSE}) whether the input data is for test
 (\code{TRUE}, i.e., without labels) or for train (\code{FALSE})}
+
+\item{gzipr}{trained model}
+
+\item{newdata}{optional new test data to classify}
+
+\item{k}{(int, default k = 3) number of neighbors to consider}
+
+\item{.progress}{(logical, default .progress = TRUE) whether to
+display a progress bar.}
 }
 \value{
 a \code{gzipr} model object
@@ -69,6 +81,11 @@ same data and possibly changing the labels
 
 \item \code{gzipr(default)}: catch-all method for not yet implemented training
 objects
+
+}}
+\section{Methods (by generic)}{
+\itemize{
+\item \code{predict(gzipr)}: method to predict on a \code{gzipr} model
 
 }}
 \examples{

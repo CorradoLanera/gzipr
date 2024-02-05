@@ -17,9 +17,9 @@ gzipr(x, y = NULL, test = FALSE)
 
 \method{gzipr}{list}(x, y = NULL, test = FALSE)
 
-\method{gzipr}{gzipr}(x, y = NULL)
+\method{gzipr}{gzipr}(x, y = NULL, test = FALSE)
 
-\method{gzipr}{default}(x, y = NULL)
+\method{gzipr}{default}(x, y = NULL, test = FALSE)
 }
 \arguments{
 \item{x}{training data}

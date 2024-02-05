@@ -129,7 +129,7 @@ gzipr.gzipr <- function(x, y = NULL, test = FALSE) {
 #' @describeIn gzipr catch-all method for not yet implemented training
 #'   objects
 #' @export
-gzipr.default <- function(x, y = NULL) {
+gzipr.default <- function(x, y = NULL, test = FALSE) {
   usethis::ui_stop(paste(
     "gzipr not yet implemented for objects of class",
     "{paste(class(x), collapse = ', ')}"

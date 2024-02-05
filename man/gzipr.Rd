@@ -9,13 +9,13 @@
 \alias{gzipr.default}
 \title{gzipr}
 \usage{
-gzipr(x, y = NULL)
+gzipr(x, y = NULL, test = FALSE)
 
-\method{gzipr}{character}(x, y = NULL)
+\method{gzipr}{character}(x, y = NULL, test = FALSE)
 
-\method{gzipr}{data.frame}(x, y = NULL)
+\method{gzipr}{data.frame}(x, y = NULL, test = FALSE)
 
-\method{gzipr}{list}(x, y = NULL)
+\method{gzipr}{list}(x, y = NULL, test = FALSE)
 
 \method{gzipr}{gzipr}(x, y = NULL)
 
@@ -29,6 +29,9 @@ same length of \code{x}, i.e., one label per observation. If provided,
 \code{y} is used as labels for \code{x}, otherwise, if \code{x} is named
 (\code{rownames} for \code{data.frame}s, \code{names} for \code{character}s) \code{y} is set
 to the names of \code{x}. If \code{x} is not named, \code{y} must be provided.}
+
+\item{test}{(default = \code{FALSE}) whether the input data is for test
+(\code{TRUE}, i.e., without labels) or for train (\code{FALSE})}
 }
 \value{
 a \code{gzipr} model object

@@ -1,6 +1,8 @@
 test_that("gzip_knn works", {
   # setup
-  smpl <- letters |> sample(10, replace = TRUE)
+  smpl <- letters |>
+    sample(10, replace = TRUE) |>
+    purrr::set_names()
   model <- gzipr(smpl)
   x <- sample(smpl, 1)
 

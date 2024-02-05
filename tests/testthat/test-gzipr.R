@@ -3,22 +3,22 @@ test_that("gzip works for characters", {
   smpl <- letters |> sample(10, replace = TRUE)
 
   # eval
-  char_self <- gzipr(smpl)
   char_label <- gzipr(smpl, toupper(smpl))
   char_relabelles <- gzipr(char_label, smpl)
 
   # test
-  expect_s3_class(char_self, "gzipr")
   expect_s3_class(char_label, "gzipr")
   expect_s3_class(char_relabelles, "gzipr")
 
-  expect_length(char_self, length(smpl))
   expect_length(char_label, length(smpl))
   expect_length(char_relabelles, length(smpl))
 
-  expect_named(char_self, smpl)
   expect_named(char_label, toupper(smpl))
   expect_named(char_relabelles, smpl)
+  expect_error(
+    gzipr(smpl),
+    "y must be provided if x has no names"
+  )
 })
 
 
@@ -77,9 +77,11 @@ test_that("gzip works for lists", {
 
 
 
-test_that("predict.gzipr works", {
+test_that("predict.gzipr works on characters", {
   # setup
-  smpl <- letters |> sample(10, replace = TRUE)
+  smpl <- letters |>
+    sample(10, replace = TRUE) |>
+    purrr::set_names()
   model_self <- gzipr(smpl)
   model_label <- gzipr(smpl, toupper(smpl))
 
@@ -90,4 +92,17 @@ test_that("predict.gzipr works", {
   # test
   expect_subset(result_self, smpl)
   expect_subset(result_label, toupper(smpl))
+})
+
+
+test_that("predict.gzipr works on data frames", {
+  # setup
+  df <- mtcars
+  model <- gzipr(df[, -2], df[[2]])
+
+  # eval
+  result <- predict(model, df[, -2])
+
+  # test
+  expect_subset(result, as.character(df[[2]]))
 })
